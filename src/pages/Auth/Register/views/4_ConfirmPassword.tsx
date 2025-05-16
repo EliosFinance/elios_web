@@ -8,11 +8,13 @@ import RegisterHeader from '../components/RegisterHeader';
 const ConfirmPassword: React.FC = () => {
     const [error, setError] = useState<string>('');
     const [isValid, setIsValid] = useState<boolean>(false);
+
     const {
         password1: password,
         password2: confirmPassword,
         setPassword2: setConfirmPassword,
     } = useRegisterUsersStore();
+
     const navigate = useNavigate();
 
     const handleNext = () => {
@@ -38,12 +40,14 @@ const ConfirmPassword: React.FC = () => {
         };
 
         validatePassword();
-    }, [confirmPassword]);
+    }, [confirmPassword, password]);
 
     return (
-        <div className='flex flex-col items-center justify-between w-full h-screen px-4 pt-6 bg-white pb-28'>
+        <div className='h-screen w-full flex flex-col bg-white px-4'>
             <RegisterHeader title='Confirmez votre mot de passe Elios' />
-            <div className='flex flex-col items-center justify-center w-full max-w-sm'>
+
+            {/* Bloc central avec un espacement sous le titre */}
+            <div className='flex-1 flex flex-col justify-center items-center text-center max-w-lg mx-auto w-full gap-6 mt-10'>
                 <input
                     type='password'
                     placeholder='Confirmez votre mot de passe'
@@ -52,14 +56,12 @@ const ConfirmPassword: React.FC = () => {
                         setConfirmPassword(e.target.value);
                         setError('');
                     }}
-                    className='w-full max-w-sm px-4 py-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base'
                 />
 
-                {/* Message d'erreur */}
-                {error && <p className='mb-4 text-sm text-center text-red-500'>{error}</p>}
+                {error && <p className='text-sm text-red-500 text-center -mt-2 -mb-2'>{error}</p>}
 
-                {/* Critères de validation */}
-                <ul className='w-full max-w-sm mb-6 text-sm text-gray-600 space-y-2'>
+                <ul className='w-full text-base text-left text-gray-600 space-y-2'>
                     {[
                         { text: 'Au moins 8 caractères', condition: confirmPassword.length >= 8 },
                         { text: 'Au moins 1 nombre', condition: /[0-9]/.test(confirmPassword) },
@@ -81,17 +83,20 @@ const ConfirmPassword: React.FC = () => {
                 </ul>
             </div>
 
-            <Button
-                onClick={handleNext}
-                disabled={!isValid} // Désactive le bouton si les conditions ne sont pas remplies
-                className={`w-full max-w-sm px-4 py-2 rounded-full text-center ${
-                    isValid
-                        ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-            >
-                Suivant
-            </Button>
+            {/* Bouton bas avec espace au-dessus */}
+            <div className='w-full max-w-lg mx-auto px-2 mt-6 pb-40'>
+                <Button
+                    onClick={handleNext}
+                    disabled={!isValid}
+                    className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
+                        isValid
+                            ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                >
+                    Suivant
+                </Button>
+            </div>
         </div>
     );
 };

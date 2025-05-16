@@ -21,30 +21,32 @@ const EmailVerification: React.FC = () => {
     }, [userEmail]);
 
     return (
-        <div className='flex flex-col items-center justify-between w-full h-screen px-4 pt-6 pb-20 bg-white'>
+        <div className='h-screen w-full flex flex-col bg-white px-4 overflow-hidden'>
             <RegisterHeader title='Vérifiez votre adresse mail' />
 
-            <div className='flex flex-col items-center justify-center'>
-                <img src={mailLogo} alt='Mail Logo' className='w-24 h-24 mb-6' />
-                {/* Titre et sous-titre */}
-                <h1 className='mb-4 text-xl font-bold text-center text-gray-800'>Jetez un oeil à vos emails</h1>
-                <p className='mb-6 text-sm text-center text-gray-600'>
-                    Cliquez sur le lien de vérification qui vient d'être envoyé à l'adresse <br />
-                    <span className='font-semibold'>{userEmail}</span>. <br />
-                </p>
+            {/* Contenu principal élargi */}
+            <div className='flex-1 flex flex-col justify-center items-center text-center max-w-lg mx-auto gap-6'>
+                <img src={mailLogo} alt='Mail Logo' className='w-24 h-24' />
 
-                {/* Lien pour renvoyer l'email */}
-                <p className='mb-6 text-sm text-center text-gray-600'>
-                    Vous n'avez pas reçu d'email ? <button className='font-semibold text-blue-500'>Renvoyer</button>
+                <p className='text-base text-gray-600'>
+                    Cliquez sur le lien de vérification qui vient d’être envoyé à l’adresse :
+                </p>
+                <p className='text-base font-semibold text-gray-800'>{userEmail}</p>
+
+                <p className='text-base text-gray-600'>
+                    Vous n’avez pas reçu d’email ?{' '}
+                    <button className='font-semibold text-blue-500 hover:underline'>Renvoyer</button>
                 </p>
             </div>
-            <div className='flex flex-col items-center justify-center w-full'>
-                <Button className='w-full max-w-sm px-4 py-2 mb-4 text-center text-white bg-blue-500 rounded-full hover:bg-blue-600'>
+
+            {/* Boutons élargis */}
+            <div className='w-full max-w-lg mx-auto px-2 pb-6 flex flex-col gap-3'>
+                <Button className='w-full py-3 text-base text-white bg-blue-500 rounded-full hover:bg-blue-600'>
                     Ouvrir mon application d'email
                 </Button>
                 <Button
                     onClick={handleNext}
-                    className='w-full max-w-sm px-4 py-2 font-bold text-center text-gray-800 bg-transparent rounded-full hover:bg-gray-300'
+                    className='w-full py-3 text-base font-bold text-gray-800 bg-gray-100 rounded-full hover:bg-gray-200'
                 >
                     Plus tard
                 </Button>

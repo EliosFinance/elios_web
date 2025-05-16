@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import RegisterHeader from '../components/RegisterHeader';
 
 const TermsAndConditions: React.FC = () => {
-    const [isAccepted, setIsAccepted] = useState(false); // État pour gérer l'acceptation
+    const [isAccepted, setIsAccepted] = useState(false);
     const navigate = useNavigate();
     const { authenticate } = useAuth();
     const { email, username, password2: password, pin2, clear } = useRegisterUsersStore();
@@ -28,11 +28,13 @@ const TermsAndConditions: React.FC = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-between w-full h-screen px-4 pt-6 bg-white pb-28'>
+        <div className='h-screen w-full flex flex-col bg-white px-4'>
             <RegisterHeader title="Conditions générales d'utilisation" />
 
-            <div className='flex flex-col items-center justify-center w-full max-w-sm'>
-                <div className='w-full p-4 mb-6 overflow-y-auto text-sm text-gray-700 border border-blue-300 rounded-lg max-h-64'>
+            {/* Contenu principal scrollable et centré */}
+            <div className='flex-1 flex flex-col items-center justify-center max-w-md mx-auto w-full gap-6 mt-6'>
+                {/* Bloc texte scrollable */}
+                <div className='w-full p-4 overflow-y-auto text-sm text-gray-700 border border-blue-300 rounded-lg max-h-64'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac lacus cursus risus posuere
                     pharetra sed eu turpis. Cras pulvinar elementum dolor, eget aliquam felis facilisis et. Fusce ante
                     risus, gravida vitae ante a, venenatis vestibulum nunc. Nam vitae ante fringilla leo vulputate
@@ -47,7 +49,8 @@ const TermsAndConditions: React.FC = () => {
                     Lorem ipsum dolor sit amet, consectetur...
                 </div>
 
-                <div className='flex items-center mb-4 space-x-2'>
+                {/* Checkbox */}
+                <div className='flex items-center space-x-2'>
                     <input
                         type='checkbox'
                         id='accept-terms'
@@ -61,15 +64,20 @@ const TermsAndConditions: React.FC = () => {
                 </div>
             </div>
 
-            <Button
-                onClick={handleNext}
-                className={`w-full px-4 py-2 text-white text-center rounded-full ${
-                    isAccepted ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-300 cursor-not-allowed'
-                }`}
-                disabled={!isAccepted}
-            >
-                Acceder à Elios
-            </Button>
+            {/* Bouton bas */}
+            <div className='w-full max-w-md mx-auto px-2 pb-10 mt-8'>
+                <Button
+                    onClick={handleNext}
+                    disabled={!isAccepted}
+                    className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
+                        isAccepted
+                            ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                >
+                    Accéder à Elios
+                </Button>
+            </div>
         </div>
     );
 };

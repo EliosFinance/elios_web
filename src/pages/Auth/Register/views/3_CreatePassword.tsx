@@ -32,28 +32,27 @@ const CreatePassword: React.FC = () => {
     }, [password]);
 
     return (
-        <div className='flex flex-col items-center justify-between w-full h-screen px-4 pt-6 bg-white pb-28'>
+        <div className='h-screen w-full flex flex-col bg-white px-4'>
+            {/* Header */}
             <RegisterHeader title='Créez votre mot de passe Elios' />
 
-            <div className='flex flex-col items-center justify-center w-full max-w-sm'>
-                <h1 className='mb-4 text-xl font-bold text-gray-800'>Créez votre mot de passe Elios</h1>
-
+            {/* Contenu central */}
+            <div className='flex-1 flex flex-col justify-center items-center text-center max-w-lg mx-auto w-full gap-6'>
+                {/* Champ mot de passe */}
                 <input
                     type='password'
                     placeholder='Votre mot de passe'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className='w-full max-w-sm px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base'
                 />
 
-                <ul className='w-full max-w-sm mb-6 text-sm text-gray-600 space-y-2'>
+                {/* Liste de règles */}
+                <ul className='w-full text-base text-left text-gray-600 space-y-2'>
                     {[
                         { text: 'Au moins 8 caractères', condition: password.length >= 8 },
                         { text: 'Au moins 1 nombre', condition: /[0-9]/.test(password) },
-                        {
-                            text: 'Au moins 1 caractère spécial',
-                            condition: /[;_/!@#$%^&*(),.?":{}|<>]/.test(password),
-                        },
+                        { text: 'Au moins 1 caractère spécial', condition: /[;_/!@#$%^&*(),.?":{}|<>]/.test(password) },
                         { text: 'Au moins 1 lettre majuscule', condition: /[A-Z]/.test(password) },
                         { text: 'Au moins 1 lettre minuscule', condition: /[a-z]/.test(password) },
                     ].map(({ text, condition }, idx) => (
@@ -67,17 +66,20 @@ const CreatePassword: React.FC = () => {
                 </ul>
             </div>
 
-            <Button
-                onClick={handleNext}
-                disabled={!isValid} // Désactive le bouton si les conditions ne sont pas remplies
-                className={`w-full max-w-sm px-4 py-2 rounded-full text-center ${
-                    isValid
-                        ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-            >
-                Suivant
-            </Button>
+            {/* Bouton "Suivant" */}
+            <div className='w-full max-w-lg mx-auto px-2 pb-40'>
+                <Button
+                    onClick={handleNext}
+                    disabled={!isValid}
+                    className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
+                        isValid
+                            ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                >
+                    Suivant
+                </Button>
+            </div>
         </div>
     );
 };

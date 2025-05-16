@@ -18,7 +18,6 @@ const CreateUsername: React.FC = () => {
 
     useEffect(() => {
         const validateUsername = () => {
-            // TODO: request backend for unique username
             const conditions = [username.length >= 5, !/[^a-zA-Z0-9]/.test(username)];
             setIsValid(conditions.every((condition) => condition));
         };
@@ -27,25 +26,26 @@ const CreateUsername: React.FC = () => {
     }, [username]);
 
     return (
-        <div className='flex flex-col items-center justify-between w-full h-screen px-4 pt-6 bg-white pb-28'>
+        <div className='h-screen w-full flex flex-col bg-white px-4'>
+            {/* Header */}
             <RegisterHeader title="Créez votre nom d'utilisateur" />
 
-            <div className='flex flex-col items-center justify-center w-full max-w-sm'>
+            {/* Contenu centré */}
+            <div className='flex-1 flex flex-col justify-center items-center text-center max-w-lg mx-auto w-full gap-6'>
+                {/* Champ de saisie */}
                 <input
                     type='text'
                     placeholder="Votre nom d'utilisateur"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    className='w-full max-w-sm px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base'
                 />
 
-                <ul className='w-full max-w-sm mb-6 text-sm text-gray-600 space-y-2'>
+                {/* Règles de validation */}
+                <ul className='w-full text-base text-left text-gray-600 space-y-2'>
                     {[
                         { text: 'Au moins 5 caractères', condition: username.length >= 5 },
-                        {
-                            text: 'Pas de charactères spéciaux',
-                            condition: !/[^a-zA-Z0-9]/.test(username),
-                        },
+                        { text: 'Pas de caractères spéciaux', condition: !/[^a-zA-Z0-9]/.test(username) },
                     ].map(({ text, condition }, idx) => (
                         <li key={idx} className='flex items-center'>
                             <span className={`mr-2 ${condition ? 'text-green-500' : 'text-red-500'}`}>
@@ -57,17 +57,20 @@ const CreateUsername: React.FC = () => {
                 </ul>
             </div>
 
-            <Button
-                onClick={handleNext}
-                disabled={!isValid} // Désactive le bouton si les conditions ne sont pas remplies
-                className={`w-full max-w-sm px-4 py-2 rounded-full text-center ${
-                    isValid
-                        ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-            >
-                Suivant
-            </Button>
+            {/* Bouton bas */}
+            <div className='w-full max-w-lg mx-auto px-2 pb-40'>
+                <Button
+                    onClick={handleNext}
+                    disabled={!isValid}
+                    className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
+                        isValid
+                            ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
+                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    }`}
+                >
+                    Suivant
+                </Button>
+            </div>
         </div>
     );
 };
