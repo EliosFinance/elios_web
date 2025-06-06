@@ -43,7 +43,7 @@ const ConfirmPassword: React.FC = () => {
     }, [confirmPassword, password]);
 
     return (
-        <div className='h-screen w-full flex flex-col bg-white px-4'>
+        <div className='h-screen w-full flex flex-col bg-white dark:bg-gray-900 px-4'>
             <RegisterHeader title='Confirmez votre mot de passe Elios' />
 
             {/* Bloc central avec un espacement sous le titre */}
@@ -56,12 +56,12 @@ const ConfirmPassword: React.FC = () => {
                         setConfirmPassword(e.target.value);
                         setError('');
                     }}
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base'
+                    className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-base text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-800 placeholder:text-gray-500 dark:placeholder:text-gray-400'
                 />
 
                 {error && <p className='text-sm text-red-500 text-center -mt-2 -mb-2'>{error}</p>}
 
-                <ul className='w-full text-base text-left text-gray-600 space-y-2'>
+                <ul className='w-full text-base text-left text-gray-600 dark:text-gray-400 space-y-2'>
                     {[
                         { text: 'Au moins 8 caractères', condition: confirmPassword.length >= 8 },
                         { text: 'Au moins 1 nombre', condition: /[0-9]/.test(confirmPassword) },
@@ -91,7 +91,7 @@ const ConfirmPassword: React.FC = () => {
                     className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
                         isValid
                             ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
-                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                     }`}
                 >
                     Suivant

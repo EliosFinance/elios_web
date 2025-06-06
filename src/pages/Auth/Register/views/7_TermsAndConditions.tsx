@@ -28,13 +28,13 @@ const TermsAndConditions: React.FC = () => {
     };
 
     return (
-        <div className='h-screen w-full flex flex-col bg-white px-4'>
+        <div className='h-screen w-full flex flex-col bg-white dark:bg-gray-900 px-4'>
             <RegisterHeader title="Conditions générales d'utilisation" />
 
             {/* Contenu principal scrollable et centré */}
             <div className='flex-1 flex flex-col items-center justify-center max-w-md mx-auto w-full gap-6 mt-6'>
                 {/* Bloc texte scrollable */}
-                <div className='w-full p-4 overflow-y-auto text-sm text-gray-700 border border-blue-300 rounded-lg max-h-64'>
+                <div className='w-full p-4 overflow-y-auto text-sm text-gray-700 dark:text-gray-300 border border-blue-300 dark:border-blue-500 rounded-lg max-h-64 bg-white dark:bg-gray-800'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac lacus cursus risus posuere
                     pharetra sed eu turpis. Cras pulvinar elementum dolor, eget aliquam felis facilisis et. Fusce ante
                     risus, gravida vitae ante a, venenatis vestibulum nunc. Nam vitae ante fringilla leo vulputate
@@ -56,9 +56,9 @@ const TermsAndConditions: React.FC = () => {
                         id='accept-terms'
                         checked={isAccepted}
                         onChange={(e) => setIsAccepted(e.target.checked)}
-                        className='w-5 h-5 text-blue-500 border-gray-300 rounded focus:ring-blue-500'
+                        className='w-5 h-5 text-blue-500 border-gray-300 dark:border-gray-600 rounded focus:ring-blue-500 dark:focus:ring-blue-400'
                     />
-                    <label htmlFor='accept-terms' className='text-sm text-gray-800'>
+                    <label htmlFor='accept-terms' className='text-sm text-gray-800 dark:text-gray-200'>
                         J'ai lu et j'accepte les conditions générales
                     </label>
                 </div>
@@ -72,7 +72,7 @@ const TermsAndConditions: React.FC = () => {
                     className={`w-full py-3 rounded-full text-base font-semibold text-center transition ${
                         isAccepted
                             ? 'bg-blue-500 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-400'
-                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                            : 'bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                     }`}
                 >
                     Accéder à Elios
