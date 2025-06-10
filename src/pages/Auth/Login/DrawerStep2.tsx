@@ -31,7 +31,7 @@ const DrawerStep2: React.FC<DrawerStep1Props> = ({ onNext, setDataForStep3 }) =>
     return (
         <div className='p-4 mb-10'>
             <div className='mb-6 text-center'>
-                <h2 className='text-lg font-bold text-gray-800'>Se connecter</h2>
+                <h2 className='text-lg font-bold text-gray-800 dark:text-gray-100'>Se connecter</h2>
             </div>
             <div className='space-y-3'>
                 <div className='space-y-3'>
@@ -41,9 +41,9 @@ const DrawerStep2: React.FC<DrawerStep1Props> = ({ onNext, setDataForStep3 }) =>
                         placeholder='Votre email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className={`w-full px-4 py-2 border-t-none border-r-none border-l-none border-b-solid border-b-[1.5px] ${
-                            error ? 'border-red-500' : 'border-gray-300'
-                        } focus:outline-none focus:ring-0 text-m placeholder:text-gray-500 placeholder:font-semibold`}
+                        className={`w-full px-4 py-2 border-t-none border-r-none border-l-none border-b-solid border-b-[1.5px] bg-transparent ${
+                            error ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                        } focus:outline-none focus:ring-0 text-m text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:font-semibold`}
                     />
                     <input
                         id='password'
@@ -51,15 +51,15 @@ const DrawerStep2: React.FC<DrawerStep1Props> = ({ onNext, setDataForStep3 }) =>
                         placeholder='Votre mot de passe'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className={`w-full px-4 py-2 border-t-none border-r-none border-l-none border-b-solid border-b-[1.5px] ${
-                            error ? 'border-red-500' : 'border-gray-300'
-                        } focus:outline-none focus:ring-0 text-m placeholder:text-gray-500 placeholder:font-semibold`}
+                        className={`w-full px-4 py-2 border-t-none border-r-none border-l-none border-b-solid border-b-[1.5px] bg-transparent ${
+                            error ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                        } focus:outline-none focus:ring-0 text-m text-gray-800 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:font-semibold`}
                     />
                     {/* Message d'erreur */}
                     {error && <p className='mt-2 text-sm text-red-500'>E-mail ou mot de passe incorrect.</p>}
                 </div>
             </div>
-            <div className='flex flex-col items-start justify-start mt-2 text-xs text-center text-gray-500 '>
+            <div className='flex flex-col items-start justify-start mt-2 text-xs text-center text-gray-500 dark:text-gray-400'>
                 {/* TODO: FORGOT PASSWORD */}
                 <span
                     className='text-blue-500 cursor-pointer'

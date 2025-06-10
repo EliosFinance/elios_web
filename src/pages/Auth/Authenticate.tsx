@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import DrawerStep1 from './Login/DrawerStep1';
 import DrawerStep2 from './Login/DrawerStep2';
-import DrawerStep3 from './Login/DrawerStep3';
+import PinVerification from './Login/PinVerification';
 
 const Authenticate: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -43,12 +43,12 @@ const Authenticate: React.FC = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center h-screen w-full px-8 bg-white'>
+        <div className='flex flex-col items-center justify-center h-screen w-full px-8 bg-white dark:bg-gray-900'>
             <div className='w-full max-w-xl flex flex-col items-center gap-6'>
                 {/* Titre + logo */}
                 <div className='flex flex-col items-center'>
                     <img src={mainLogo} alt='Elios Logo' className='w-20 h-20 mb-2 rounded-4' />
-                    <h1 className='text-3xl font-bold text-gray-800 text-center w-full leading-snug'>
+                    <h1 className='text-3xl font-bold text-gray-800 dark:text-gray-100 text-center w-full leading-snug'>
                         Créez un compte pour sauvegarder vos réponses
                     </h1>
 
@@ -66,7 +66,7 @@ const Authenticate: React.FC = () => {
                                 </svg>
                             ))}
                         </div>
-                        <p className='mt-1 text-xs text-gray-500'>noté 4.98/5 - 4324 notes</p>
+                        <p className='mt-1 text-xs text-gray-500 dark:text-gray-400'>noté 4.98/5 - 4324 notes</p>
                     </div>
                 </div>
 
@@ -78,8 +78,8 @@ const Authenticate: React.FC = () => {
                         placeholder='Votre email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className={`w-full px-4 py-2 border-b-2 text-sm placeholder:text-gray-500 placeholder:font-medium focus:outline-none ${
-                            error ? 'border-red-500' : 'border-gray-300'
+                        className={`w-full px-4 py-2 border-b-2 text-sm bg-transparent placeholder:text-gray-500 dark:placeholder:text-gray-400 placeholder:font-medium text-gray-800 dark:text-gray-100 focus:outline-none ${
+                            error ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                         }`}
                     />
                     {error && <p className='mt-2 text-sm text-red-500'>{error}</p>}
@@ -92,9 +92,9 @@ const Authenticate: React.FC = () => {
                     </Button>
 
                     <div className='flex items-center w-full my-4'>
-                        <hr className='flex-grow border-gray-300' />
-                        <span className='mx-4 text-xs text-gray-500'>ou</span>
-                        <hr className='flex-grow border-gray-300' />
+                        <hr className='flex-grow border-gray-300 dark:border-gray-600' />
+                        <span className='mx-4 text-xs text-gray-500 dark:text-gray-400'>ou</span>
+                        <hr className='flex-grow border-gray-300 dark:border-gray-600' />
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@ const Authenticate: React.FC = () => {
                     />
 
                     {(os === OsEnum.IOS || os === OsEnum.WEB) && (
-                        <Button className='flex items-center justify-center w-full border border-gray-200 text-gray-800 rounded-full bg-transparent hover:bg-gray-300 py-2'>
+                        <Button className='flex items-center justify-center w-full border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-100 rounded-full bg-transparent hover:bg-gray-300 dark:hover:bg-gray-700 py-2'>
                             <img src={appleIcon} alt='Apple' className='h-4 mr-2' />
                             <span className='text-sm'>Continuer avec Apple</span>
                         </Button>
@@ -127,11 +127,11 @@ const Authenticate: React.FC = () => {
 
                     <Drawer>
                         <DrawerTrigger asChild>
-                            <Button className='w-full border border-gray-200 text-gray-800 py-2 rounded-full bg-transparent hover:bg-gray-300'>
+                            <Button className='w-full border border-gray-200 dark:border-gray-600 text-gray-800 dark:text-gray-100 py-2 rounded-full bg-transparent hover:bg-gray-300 dark:hover:bg-gray-700'>
                                 J'ai déjà un compte
                             </Button>
                         </DrawerTrigger>
-                        <DrawerContent>
+                        <DrawerContent className='bg-white dark:bg-gray-900'>
                             <Button
                                 className='absolute p-2 top-2 left-4 bg-transparent rounded-full'
                                 onClick={() => {
@@ -143,7 +143,7 @@ const Authenticate: React.FC = () => {
                                     }
                                 }}
                             >
-                                <ArrowLeftCircleIcon className='w-6 h-6 text-gray-800' />
+                                <ArrowLeftCircleIcon className='w-6 h-6 text-gray-800 dark:text-gray-100' />
                             </Button>
                             <DrawerClose className='absolute top-2 right-4'>
                                 <Button
@@ -152,7 +152,7 @@ const Authenticate: React.FC = () => {
                                 >
                                     <svg
                                         xmlns='http://www.w3.org/2000/svg'
-                                        className='w-6 h-6 text-gray-800'
+                                        className='w-6 h-6 text-gray-800 dark:text-gray-100'
                                         fill='none'
                                         viewBox='0 0 24 24'
                                         stroke='currentColor'
@@ -174,9 +174,7 @@ const Authenticate: React.FC = () => {
                                     setDataForStep3={(email, password) => setDataForStep3({ email, password })}
                                 />
                             )}
-                            {drawerStep === 'step3' && dataForStep3 && (
-                                <DrawerStep3 email={dataForStep3.email} password={dataForStep3.password} />
-                            )}
+                            {drawerStep === 'step3' && dataForStep3 && <PinVerification />}
                         </DrawerContent>
                     </Drawer>
                 </div>

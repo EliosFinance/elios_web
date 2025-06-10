@@ -19,24 +19,24 @@ const FirstTimerView: React.FC = () => {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center w-full h-screen px-4 bg-white'>
+        <div className='flex flex-col items-center justify-center w-full h-screen px-4 bg-white dark:bg-gray-900'>
             {/* Logo */}
             <img src={mainLogo} alt='Elios Logo' className='w-24 h-24 mb-6' />
 
             {/* Titre */}
-            <h1 className='mb-4 text-2xl font-bold text-center text-gray-800'>ELIOS</h1>
+            <h1 className='mb-4 text-2xl font-bold text-center text-gray-800 dark:text-gray-100'>ELIOS</h1>
 
             {/* Sous-titre */}
-            <p className='mb-4 text-sm text-center text-gray-500'>
+            <p className='mb-4 text-sm text-center text-gray-500 dark:text-gray-400'>
                 Élevez votre expérience financière avec Elios : <br />
                 Bienvenue dans le futur de l'ère bancaire.
             </p>
 
             {/* Séparateur */}
             <div className='flex items-center justify-center mb-6'>
-                <span className='inline-block w-4 h-[2px] bg-gray-600 rounded-full mx-[2px]'></span>
-                <span className='inline-block w-6 h-[2px] bg-black rounded-full mx-[2px]'></span>
-                <span className='inline-block w-4 h-[2px] bg-gray-600 rounded-full mx-[2px]'></span>
+                <span className='inline-block w-4 h-[2px] bg-gray-600 dark:bg-gray-400 rounded-full mx-[2px]'></span>
+                <span className='inline-block w-6 h-[2px] bg-black dark:bg-gray-200 rounded-full mx-[2px]'></span>
+                <span className='inline-block w-4 h-[2px] bg-gray-600 dark:bg-gray-400 rounded-full mx-[2px]'></span>
             </div>
 
             {/* Bouton */}

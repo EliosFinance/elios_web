@@ -21,19 +21,19 @@ const EmailVerification: React.FC = () => {
     }, [userEmail]);
 
     return (
-        <div className='h-screen w-full flex flex-col bg-white px-4 overflow-hidden'>
+        <div className='h-screen w-full flex flex-col bg-white dark:bg-gray-900 px-4 overflow-hidden'>
             <RegisterHeader title='Vérifiez votre adresse mail' />
 
             {/* Contenu principal élargi */}
             <div className='flex-1 flex flex-col justify-center items-center text-center max-w-lg mx-auto gap-6'>
                 <img src={mailLogo} alt='Mail Logo' className='w-24 h-24' />
 
-                <p className='text-base text-gray-600'>
+                <p className='text-base text-gray-600 dark:text-gray-400'>
                     Cliquez sur le lien de vérification qui vient d’être envoyé à l’adresse :
                 </p>
-                <p className='text-base font-semibold text-gray-800'>{userEmail}</p>
+                <p className='text-base font-semibold text-gray-800 dark:text-gray-100'>{userEmail}</p>
 
-                <p className='text-base text-gray-600'>
+                <p className='text-base text-gray-600 dark:text-gray-400'>
                     Vous n’avez pas reçu d’email ?{' '}
                     <button className='font-semibold text-blue-500 hover:underline'>Renvoyer</button>
                 </p>
@@ -46,7 +46,7 @@ const EmailVerification: React.FC = () => {
                 </Button>
                 <Button
                     onClick={handleNext}
-                    className='w-full py-3 text-base font-bold text-gray-800 bg-gray-100 rounded-full hover:bg-gray-200'
+                    className='w-full py-3 text-base font-bold text-gray-800 dark:text-gray-100 bg-gray-100 dark:bg-gray-700 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600'
                 >
                     Plus tard
                 </Button>
